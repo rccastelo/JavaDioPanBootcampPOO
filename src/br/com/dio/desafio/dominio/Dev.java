@@ -60,6 +60,11 @@ public class Dev {
 	}
 
 	@Override
+	public String toString() {
+		return "Dev nome [" + nome + "] xp [" + this.calcularTotalXp() + "] ";
+	}
+
+	@Override
 	public int hashCode() {
 		return Objects.hash(nome, conteudosInscritos, conteudosConcluidos);
 	}
