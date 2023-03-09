@@ -11,6 +11,11 @@ public class Dev {
 	private Set<Conteudo> conteudosConcluidos;
 	
 	public Dev() {
+		this(null);
+	}
+	
+	public Dev(String nome) {
+		this.nome = nome;
 		conteudosInscritos = new LinkedHashSet<>();
 		conteudosConcluidos = new LinkedHashSet<>();
 	}

@@ -3,6 +3,24 @@ package br.com.dio.desafio.dominio;
 public class Curso extends Conteudo {
 	private int cargaHoraria;
 	
+	public Curso() {
+		this(null, null, 0);
+	}
+	
+	public Curso(int cargaHoraria) {
+		this(null, null, cargaHoraria);
+	}
+
+	public Curso(String titulo, String descricao) {
+		this(titulo, descricao, 0);
+	}
+	
+	public Curso(String titulo, String descricao, int cargaHoraria) {
+		super.setTitulo(titulo);
+		super.setDescricao(descricao);
+		this.cargaHoraria = cargaHoraria;
+	}
+	
 	public int getCargaHoraria() {
 		return cargaHoraria;
 	}

@@ -14,31 +14,39 @@ public class Main {
 		curso1.setDescricao("Descrição do curso de Java");
 		curso1.setCargaHoraria(5);
 		
-		Curso curso2 = new Curso();
-		curso2.setTitulo("Curso AWS");
-		curso2.setDescricao("Descrição do curso de AWS");
-		curso2.setCargaHoraria(4);
+		Curso curso2 = new Curso("Curso Java Spring Boot", "Descrição do curso de Java Spring Boot", 4);
 		
+		Curso curso3 = new Curso("Curso AWS", "Descrição do curso de AWS", 7);
+
 		Mentoria mentoria1 = new Mentoria();
 		mentoria1.setTitulo("Mentoria Java");
 		mentoria1.setDescricao("Mentoria inicial de Java");
 		mentoria1.setData(LocalDate.now());
 		
+		Mentoria mentoria2 = new Mentoria("Mentoria AWS", "Mentoria inicial de AWS", LocalDate.now());
+		
+		Bootcamp bootcamp1 = new Bootcamp();
+		bootcamp1.setDescricao("Bootcamp Java Developer");
+		bootcamp1.setDescricao("Bootcamp de desenvolvimento de sistemas utilizando a linguagem Java");
+		bootcamp1.getConteudos().add(curso1);
+		bootcamp1.getConteudos().add(curso2);
+		bootcamp1.getConteudos().add(mentoria1);
+		
+		Bootcamp bootcamp2 = new Bootcamp();
+		bootcamp2.setDescricao("Bootcamp Cloud AWS");
+		bootcamp2.setDescricao("Bootcamp para entender funcionalidades de nuvem com AWS");
+		bootcamp2.getConteudos().add(curso3);
+		bootcamp2.getConteudos().add(mentoria2);
+		
 		System.out.println(curso1);
 		System.out.println(curso2);
+		System.out.println(curso3);
 		System.out.println(mentoria1);
-		
-		Bootcamp bootcamp = new Bootcamp();
-		bootcamp.setDescricao("Bootcamp Java Developer");
-		bootcamp.setDescricao("Bootcamp de desenvolvimento de sistemas utilizando a linguagem Java");
-		bootcamp.getConteudos().add(curso1);
-		bootcamp.getConteudos().add(curso2);
-		bootcamp.getConteudos().add(mentoria1);
+		System.out.println(mentoria2);
 		
 		System.out.println();
 		
-		Dev dev1 = new Dev();
-		dev1.setNome("Fulano Desenvolvedor");
+		Dev dev1 = new Dev("Fulano Desenvolvedor");
 		System.out.println(dev1);
 		System.out.println("Inscrito..." + dev1.getConteudosInscritos());
 		System.out.println("Concluido... " + dev1.getConteudosConcluidos());
@@ -53,7 +61,7 @@ public class Main {
 		
 		System.out.println();
 
-		dev1.inscreverBootcamp(bootcamp);
+		dev1.inscreverBootcamp(bootcamp1);
 		System.out.println(dev1);
 		System.out.println("Inscrito..." + dev1.getConteudosInscritos());
 		System.out.println("Concluido... " + dev1.getConteudosConcluidos());
@@ -67,7 +75,7 @@ public class Main {
 
 		System.out.println();
 
-		dev2.inscreverBootcamp(bootcamp);
+		dev2.inscreverBootcamp(bootcamp1);
 		System.out.println(dev2);
 		System.out.println("Inscrito..." + dev2.getConteudosInscritos());
 		System.out.println("Concluido... " + dev2.getConteudosConcluidos());
@@ -101,6 +109,20 @@ public class Main {
 		System.out.println("Inscrito..." + dev2.getConteudosInscritos());
 		System.out.println("Concluido... " + dev2.getConteudosConcluidos());
 
+		System.out.println();
+
+		dev1.inscreverBootcamp(bootcamp2);
+		dev1.progredir();
+		System.out.println(dev1);
+		System.out.println("Inscrito..." + dev1.getConteudosInscritos());
+		System.out.println("Concluido... " + dev1.getConteudosConcluidos());
+
+		System.out.println();
+
+		dev2.progredir();
+		System.out.println(dev2);
+		System.out.println("Inscrito..." + dev2.getConteudosInscritos());
+		System.out.println("Concluido... " + dev2.getConteudosConcluidos());
 	}
 
 }
