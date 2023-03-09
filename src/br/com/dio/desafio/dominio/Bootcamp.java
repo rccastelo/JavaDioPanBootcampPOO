@@ -15,14 +15,14 @@ public class Bootcamp {
 	private Set<Conteudo> conteudos;
 	
 	public Bootcamp() {
-		dataInicial = LocalDate.now();
-		dataFinal = dataInicial.plusDays(45);
-		devsInscritos = new HashSet<>();
-		conteudos = new LinkedHashSet<>();
+		this.dataInicial = LocalDate.now();
+		this.dataFinal = dataInicial.plusDays(45);
+		this.devsInscritos = new HashSet<>();
+		this.conteudos = new LinkedHashSet<>();
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -30,7 +30,7 @@ public class Bootcamp {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
 	public void setDescricao(String descricao) {
@@ -38,7 +38,7 @@ public class Bootcamp {
 	}
 
 	public Set<Dev> getDevsInscritos() {
-		return devsInscritos;
+		return this.devsInscritos;
 	}
 
 	public void setDevsInscritos(Set<Dev> devsInscritos) {
@@ -46,7 +46,7 @@ public class Bootcamp {
 	}
 
 	public Set<Conteudo> getConteudos() {
-		return conteudos;
+		return this.conteudos;
 	}
 
 	public void setConteudos(Set<Conteudo> conteudos) {
@@ -54,11 +54,11 @@ public class Bootcamp {
 	}
 
 	public LocalDate getDataInicial() {
-		return dataInicial;
+		return this.dataInicial;
 	}
 
 	public LocalDate getDataFinal() {
-		return dataFinal;
+		return this.dataFinal;
 	}
 
 	@Override

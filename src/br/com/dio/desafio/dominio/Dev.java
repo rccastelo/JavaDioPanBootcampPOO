@@ -16,12 +16,12 @@ public class Dev {
 	
 	public Dev(String nome) {
 		this.nome = nome;
-		conteudosInscritos = new LinkedHashSet<>();
-		conteudosConcluidos = new LinkedHashSet<>();
+		this.conteudosInscritos = new LinkedHashSet<>();
+		this.conteudosConcluidos = new LinkedHashSet<>();
 	}
 	
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -29,7 +29,7 @@ public class Dev {
 	}
 
 	public Set<Conteudo> getConteudosInscritos() {
-		return conteudosInscritos;
+		return this.conteudosInscritos;
 	}
 
 	public void setConteudosInscritos(Set<Conteudo> conteudosInscritos) {
@@ -37,15 +37,26 @@ public class Dev {
 	}
 
 	public Set<Conteudo> getConteudosConcluidos() {
-		return conteudosConcluidos;
+		return this.conteudosConcluidos;
 	}
 
 	public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
 		this.conteudosConcluidos = conteudosConcluidos;
 	}
 
-	public void inscreverBootcamp(Bootcamp bootcamp) { 
-		this.conteudosInscritos.addAll(bootcamp.getConteudos());
+	public void inscreverBootcamp(Bootcamp bootcamp) {
+		for (Conteudo c : bootcamp.getConteudos()) {
+			if (c instanceof HandsOn) {
+				this.conteudosInscritos.add(new HandsOn((HandsOn)c));
+			}
+			if (c instanceof Curso) {
+				this.conteudosInscritos.add(new Curso((Curso)c));
+			}
+			if (c instanceof Mentoria) {
+				this.conteudosInscritos.add(new Mentoria((Mentoria)c));
+			}
+		}
+		
 		bootcamp.getDevsInscritos().add(this);
 	}
 	
@@ -60,13 +71,22 @@ public class Dev {
 		}
 	}
 	
+	public void aprovarHandsOn() {
+		for (Conteudo c : this.conteudosConcluidos) {
+			if (c instanceof HandsOn) {
+				HandsOn h = (HandsOn) c;
+				h.setAprovado(true);
+			}
+		}
+	}
+	
 	public double calcularTotalXp() { 
 		return this.conteudosConcluidos.stream().mapToDouble(Conteudo::calcularXp).sum();
 	}
 
 	@Override
 	public String toString() {
-		return "Dev nome [" + nome + "] xp [" + this.calcularTotalXp() + "] ";
+		return "Dev nome [" + this.nome + "] xp [" + this.calcularTotalXp() + "] ";
 	}
 
 	@Override

@@ -16,8 +16,15 @@ public abstract class Conteudo {
 		this.descricao = descricao;
 	}
 
+	public Conteudo(Conteudo conteudo) {
+		if (conteudo != null) {
+			this.titulo = conteudo.titulo;
+			this.descricao = conteudo.descricao;
+		}
+	}
+
 	public String getTitulo() {
-		return titulo;
+		return this.titulo;
 	}
 
 	public void setTitulo(String titulo) {
@@ -25,7 +32,7 @@ public abstract class Conteudo {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
 	public void setDescricao(String descricao) {

@@ -23,8 +23,16 @@ public class Mentoria extends Conteudo {
 		this.data = data;
 	}
 	
+	public Mentoria(Mentoria mentoria) {
+		super(mentoria);
+		
+		if (mentoria != null) {
+			this.data = mentoria.data;
+		}
+	}
+	
 	public LocalDate getData() {
-		return data;
+		return this.data;
 	}
 	
 	public void setData(LocalDate data) {
@@ -33,7 +41,7 @@ public class Mentoria extends Conteudo {
 
 	@Override
 	public String toString() {
-		return "Mentoria titulo [" + getTitulo() + "] descricao [" + getDescricao() + "] data [" + data + "]";
+		return "Mentoria titulo [" + getTitulo() + "]"; // descricao [" + getDescricao() + "] data [" + data + "]";
 	}
 
 	@Override

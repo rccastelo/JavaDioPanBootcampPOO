@@ -21,8 +21,16 @@ public class Curso extends Conteudo {
 		this.cargaHoraria = cargaHoraria;
 	}
 	
+	public Curso(Curso curso) {
+		super(curso);
+		
+		if (curso != null) {
+			this.cargaHoraria = curso.cargaHoraria;
+		}
+	}
+
 	public int getCargaHoraria() {
-		return cargaHoraria;
+		return this.cargaHoraria;
 	}
 	
 	public void setCargaHoraria(int cargaHoraria) {
@@ -31,12 +39,12 @@ public class Curso extends Conteudo {
 
 	@Override
 	public String toString() {
-		return "Curso titulo [" + getTitulo() + "] descricao [" + getDescricao() + "] cargaHoraria [" + cargaHoraria + "]";
+		return "Curso titulo [" + getTitulo() + "] cargaHoraria [" + this.cargaHoraria + "]";// descricao [" + getDescricao() + "]";
 	}
 
 	@Override
 	public double calcularXp() {
-		return XP_PADRAO + cargaHoraria;
+		return XP_PADRAO + this.cargaHoraria;
 	}
 	
 }
